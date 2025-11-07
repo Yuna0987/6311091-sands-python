@@ -43,4 +43,4 @@ save_path = os.path.join(out_dir, "signal_transformations.png")
 plt.savefig(save_path, dpi=200)
 plt.show()
 
-print(r"✅ Plot saved to: C:\Users\86150\Downloads\6311091-sands-python")
+print(r"Plot saved to: C:\Users\86150\Downloads\6311091-sands-python")
