@@ -1,0 +1,24 @@
+[project]
+name = "6311091-sands-python"
+version = "0.1.0"
+description = "AESB2122 Signals and Systems Python Project by xununkang  "
+authors = [{ name = "XUNYUN KANG", email = "X.Kang-2@student.tudelft.nl" }]
+readme = "README.md"
+requires-python = ">=3.9"
+
+dependencies = [
+    "numpy>=1.24",
+    "matplotlib>=3.7"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0"
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"

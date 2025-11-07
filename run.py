@@ -1,33 +1,46 @@
-from signals import generate_sine_wave,generate_unit_step
-imfrequency = 5      
-duration = 2       
-sample_rate = 100 port matlplot .pyplot as plt
-wave = generate_sine_wave(frequency, duration, sample_rate)
-t,y = generate_sine_wave(5,2,100)
-plt.plot(t,y,label="Original sine wave")
 
-t_shifted = t+0.5
-plt.plot(t_shifted, y, label="Time shifted (+0.5s)")
-t_scaled=t*0.5
-plt.plot(t_scaled, y, label="Time scaled (0.5x)"
-         
-t2,u= generate_unit_step(2,100, step_time=1)
-plt.plot(t2, u, label="Unit step (at t=1s)")
-         y_sum=y+u
-         plt.plot(t,y_sum, label ="sine + unit step")
-         plt.xlabel("Time(s)")
+from signals import sinusoid, unit_step, time_shift, time_scale
+import matplotlib.pyplot as plt
+import numpy as np
+import os
+
+
+fs = 1000         
+duration = 2.0    
+freq = 5         
+shift = 0.3      
+scale = 1.5       
+out_dir = "outputs"
+
+
+os.makedirs(out_dir, exist_ok=True)
+
+
+t, x = sinusoid(duration, fs, freq, amplitude=1.0)
+t, step = unit_step(duration, fs, t0=1.0)
+
+
+_, x_shifted = time_shift(t, x, tau=shift)
+_, x_scaled = time_scale(t, x, a=scale)
+x_sum = x + step  
+
+plt.figure(figsize=(8, 5))
+plt.plot(t, x, label="Original sinusoid", linewidth=2)
+plt.plot(t, x_shifted, "--", label=f"Shifted by {shift}s", alpha=0.8)
+plt.plot(t, x_scaled, ":", label=f"Scaled (×{scale})", alpha=0.8)
+plt.plot(t, x_sum, label="Sinusoid + Step", color="magenta", linewidth=2)
+plt.plot(t, step, color="orange", label="Unit Step", linewidth=1.5)
+
+plt.title("Signal Transformations", fontsize=12)
+plt.xlabel("Time [s]")
 plt.ylabel("Amplitude")
-plt.titel ("Signal transformations")
+plt.grid(True, which="both", linestyle="--", alpha=0.6)
 plt.legend()
-plt.grid(True)
+plt.tight_layout()
+
+
+save_path = os.path.join(out_dir, "signal_transformations.png")
+plt.savefig(save_path, dpi=200)
 plt.show()
-       
 
-
- 
-
-
-
-
-
-print("First 10 samples:", wave[:10])
+print(r"✅ Plot saved to: C:\Users\86150\Downloads\6311091-sands-python")
