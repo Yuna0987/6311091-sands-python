@@ -53,7 +53,7 @@ Additional operations such as **addition** and **multiplication** are demonstrat
 | File | Description |
 |------|--------------|
 | `signals.py` | Contains functions to generate and transform signals. |
-| `script.py` | Imports these functions, executes them with parameters, and plots/saves the results. |
+| `run.py` | Imports these functions, executes them with parameters, and plots/saves the results. |
 | `test_signals.py` | Contains automated tests to verify correctness. |
 | `pyproject.toml` | Project metadata and dependencies. |
 | `README.md` | Documentation (this file). |
